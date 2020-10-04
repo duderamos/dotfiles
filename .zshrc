@@ -73,4 +73,11 @@ fi
 
 [[ $HOME/bin/kubectl ]] && source <(kubectl completion zsh)
 
-. /usr/local/Cellar/fzf/0.22.0/shell/key-bindings.zsh
+case $OSTYPE in
+  linux-gnu)
+    . /usr/share/fzf/key-bindings.zsh
+    ;;
+  darwin*)
+    . /usr/local/Cellar/fzf/0.22.0/shell/key-bindings.zsh
+    ;;
+esac
