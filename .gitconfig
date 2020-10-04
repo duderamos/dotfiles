@@ -1,0 +1,17 @@
+[core]
+	pager = less -r -F -X
+	excludesfile = $HOME/.gitignore_global
+[user]
+	email = ramos.eduardo87@gmail.com
+	name = Eduardo de Lima Ramos
+	signinkey = DF04127C
+[push]
+	default = simple
+[credential]
+	helper = cache
+[branch]
+	autosetuprebase = always
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = true
