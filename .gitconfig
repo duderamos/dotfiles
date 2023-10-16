@@ -1,6 +1,7 @@
 [core]
 	pager = less -r -F -X
 	excludesfile = $HOME/.gitignore_global
+	autocrlf = input
 [user]
 	email = ramos.eduardo87@gmail.com
 	name = Eduardo de Lima Ramos
