@@ -23,7 +23,7 @@ plugins=(
 )
 
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities tanda
+zstyle :omz:plugins:ssh-agent identities eduardo
 
 source $ZSH/oh-my-zsh.sh
 
@@ -42,12 +42,23 @@ alias less='less -R'
 alias cop="git status --porcelain | awk '\$1 ~ /A|M/ && \$NF ~ /\.rb$/ { print \$NF }' | xargs rubocop --force-exclusion"
 alias brew-update='brew bundle --file=~/Brewfile --cleanup'
 
+if type -p google-chrome-stable &> /dev/null ; then
+  alias open="xdg-open"
+fi
+
+if type -p ksshaskpass &> /dev/null ; then
+  export SSH_ASKPASS="/usr/bin/ksshaskpass"
+fi
+
 function _find-edit {
   zle kill-whole-line
-  zle -U 'vim $(fzf)'
-  zle accept-line
+  zle -U 'file=$(fzf) ; [[ -n "$file" ]] && vim $file
+'
 }
 zle -N _find-edit
 
 bindkey "^P" _find-edit
 alias search-open='vim $(fzf)'
+
+export COMPOSE_DOCKER_CLI_BUILD=1
+export DOCKER_BUILDKIT=1
