@@ -50,15 +50,13 @@ if type -p ksshaskpass &> /dev/null ; then
   export SSH_ASKPASS="/usr/bin/ksshaskpass"
 fi
 
-function _find-edit {
-  zle kill-whole-line
-  zle -U 'file=$(fzf) ; [[ -n "$file" ]] && vim $file
-'
+ff() {
+  local files
+  files="$(fzf-tmux --query="$1" --multi --select-1 --exit-0)"
+  [[ -n "$files" ]] && vim "${files[@]}"
 }
-zle -N _find-edit
 
-bindkey "^P" _find-edit
-alias search-open='vim $(fzf)'
+bindkey -s '^P' 'ff\n'
 
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
