@@ -8,7 +8,6 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
   rails
   git
-  git-prompt
   nvm
   yarn
   ruby
