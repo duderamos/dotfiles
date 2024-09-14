@@ -22,7 +22,7 @@ plugins=(
 )
 
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities eduardo
+zstyle :omz:plugins:ssh-agent lazy yes
 zstyle :omz:alpha:lib:git async-prompt false;
 
 source $ZSH/oh-my-zsh.sh
