@@ -42,7 +42,7 @@ alias less='less -R'
 alias cop="git status --porcelain | awk '\$1 ~ /A|M/ && \$NF ~ /\.rb$/ { print \$NF }' | xargs rubocop --force-exclusion"
 alias brew-update='brew bundle --file=~/Brewfile --cleanup'
 
-if type -p google-chrome-stable &> /dev/null ; then
+if type -p xdg-open &> /dev/null ; then
   alias open="xdg-open"
 fi
 
