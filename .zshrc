@@ -53,13 +53,10 @@ if type -p ksshaskpass &> /dev/null ; then
   export SSH_ASKPASS="/usr/bin/ksshaskpass"
 fi
 
-ff() {
-  local files
-  files="$(fzf-tmux --query="$1" --multi --select-1 --exit-0)"
-  [[ -n "$files" ]] && vim "${files[@]}"
-}
-
-bindkey -s '^P' 'ff\n'
+alias fif='
+  ag --nogroup --column  --hidden --ignore .git . | fzf --prompt "Ag> " \
+    --ansi --preview "/usr/bin/bash \"$HOME/.vim/pack/plugins/start/fzf.vim/bin/preview.sh\" {}" \
+    --multi --delimiter ":" --preview-window "+{2}/2" --accept-nth=1 | xargs -r vim -p --not-a-term'
 
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
