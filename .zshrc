@@ -30,7 +30,7 @@ zstyle :omz:alpha:lib:git async-prompt false;
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$PATH:/sbin:/usr/sbin:$HOME/bin:$HOME/.local/bin:$HOME/.yarn/bin
+export PATH=$PATH:/sbin:/usr/sbin:$HOME/bin:$HOME/.local/bin:$HOME/.yarn/bin:/opt/homebrew/opt/python@3.13/libexec/bin:$HOME/.tgenv/bin
 export LANG=en_US.UTF-8
 export EDITOR='vim'
 export TERM=xterm-256color
@@ -57,6 +57,15 @@ alias fif='
   ag --nogroup --column  --hidden --ignore .git . | fzf --prompt "Ag> " \
     --ansi --preview "/usr/bin/bash \"$HOME/.vim/pack/plugins/start/fzf.vim/bin/preview.sh\" {}" \
     --multi --delimiter ":" --preview-window "+{2}/2" --accept-nth=1 | xargs -r vim -p --not-a-term'
+
+ff() {
+  local files
+  files="$(fzf-tmux --query="$1" --multi --select-1 --exit-0)"
+  [[ -n "$files" ]] && vim "${files[@]}"
+}
+
+bindkey -s '^P' 'ff\n'
+bindkey -s '^F' 'ff\n'
 
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
