@@ -1,7 +1,8 @@
 tap "buo/cask-upgrade"
 tap "homebrew/bundle"
-tap "gemfury/tap"
+tap "gemfury/tap", trusted: true
 # tap "hashicorp/tap"
+tap "buildkite/buildkite", trusted: true
 
 brew "awscli"
 brew "aws-sso-cli"
@@ -19,9 +20,9 @@ brew "kubectl"
 brew "macvim"
 brew "nvm"
 brew "pinentry-mac"
-brew "postgresql@15"
+brew "postgresql@17"
 brew "libpq"
-brew "rbenv"
+# brew "rbenv"
 brew "ruby-build"
 brew "shellcheck"
 # brew "terraform"
@@ -46,17 +47,14 @@ cask "font-noto-mono-for-powerline"
 cask "font-powerline-symbols"
 cask "font-roboto-mono-for-powerline"
 cask "iterm2"
-cask "iterm2"
-cask "libreoffice"
+# cask "libreoffice"
 cask "session-manager-plugin"
 cask "spectacle"
 cask "spotify"
-cask "docker"
-cask "workplace-chat"
 cask "firefox"
 
 # from tanda infra
-tap "1password/tap"
+tap "1password/tap", trusted: true
 
 brew "go"
 brew "go-jsonnet"
@@ -65,7 +63,30 @@ brew "jsonnet-bundler"
 brew "watchman" # development only
 
 cask "1password-cli"
-cask "docker"
+cask "docker-desktop"
 
-brew "circleci"
-cask "insomnia"
+# brew "circleci"
+# cask "insomnia"
+
+cask "slack"
+brew "mise"
+
+brew "ffmpeg"
+
+brew "huseyinbabal/tap/taws", trusted: true
+# cask "claude-code"
+
+brew "buildkite/buildkite/bk"
+cask "keepingyouawake"
+
+# brew "opensearch-project/tap/opensearch-cli"
+# brew "opensearch"
+# brew "buildkite/buildkite/buildkite-mcp-server"
+brew "uv"
+brew "grafana/grafana/gcx", trusted: true
+cask "ghostty"
+
+brew "gradle"
+cask "android-studio"
+
+cask "bleunlock"

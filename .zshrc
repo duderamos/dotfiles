@@ -8,13 +8,12 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
   rails
   git
-  nvm
   yarn
   ruby
   aws
   bundler
   fzf
-  rbenv
+  mise
   ssh-agent
   gpg-agent
   tmux
@@ -23,9 +22,7 @@ plugins=(
 
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 zstyle :omz:plugins:ssh-agent lazy yes
-zstyle :omz:plugins:ssh-agent identities eduardo
-zstyle :omz:plugins:nvm autoload yes
-zstyle :omz:plugins:nvm silent-autoload yes
+zstyle :omz:plugins:ssh-agent identities eduardo duderamos
 zstyle :omz:alpha:lib:git async-prompt false;
 
 source $ZSH/oh-my-zsh.sh
@@ -41,7 +38,7 @@ alias tmux="tmux -2"
 alias git-clean-master='git branch --merged master | grep -Ev "\b(main|master)\b" | xargs -n 1 git branch -d && git remote prune origin'
 alias git-clean-main='git branch --merged main | grep -Ev "\b(main|master)\b" | xargs -n 1 git branch -d && git remote prune origin'
 alias git-clean-danggling='git fetch --all -p ; git branch -vv | awk "/: gone]/ { print $1 }" | xargs -r -n 1 git branch -D'
-alias less='less -R'
+alias less='less -RX'
 alias cop="git status --porcelain | awk '\$1 ~ /A|M/ && \$NF ~ /\.rb$/ { print \$NF }' | xargs rubocop --force-exclusion"
 alias brew-update='brew bundle --file=~/Brewfile --cleanup'
 
